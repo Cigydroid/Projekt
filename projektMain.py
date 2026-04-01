@@ -76,14 +76,14 @@ while True:
 
         block.update(current_speed)
 
-        # spawn life
+        # zivoty
         if random.randint(1,100) == 1 and life_block.rect.y < 0:
             life_block.reset(0)
 
         if life_block.rect.y >= 0:
             life_block.update(current_speed)
 
-        # spawn power
+        # power upy
         if random.randint(1,150) == 1 and power_block.rect.y < 0:
             power_block.reset(0)
 
@@ -108,7 +108,7 @@ while True:
             power_timer = current_time
             power_block.reset(-300)
 
-        # pád
+        # pádání
         if block.rect.y > HEIGHT:
             if power_active == "shield":
                 power_active = None
@@ -145,7 +145,7 @@ while True:
         screen.blit(font.render(f"Score: {score}", True,(255,255,255)), (10,10))
         screen.blit(font.render(f"Lives: {lives}", True,(255,255,255)), (WIDTH-140,10))
 
-        # cooldown bar
+        # cooldown
         cd_ratio = min((current_time - player.last_dash_time)/DASH_COOLDOWN,1)
         pygame.draw.rect(screen,(100,100,100),(100,50,200,10))
         pygame.draw.rect(screen,(0,255,255),(100,50,int(200*cd_ratio),10))
